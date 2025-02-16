@@ -1,0 +1,40 @@
+{
+    "projects": [
+      {
+        "id": "1",
+        "title": "Really Basic To-Do List",
+        "description": "It's a to-do list. You add things. You remove things. That's it.",
+        "logo": "https://example.com/todo-logo.png",
+        "category": ["productivity", "boring"],
+        "url": "https://basic-todo.com",
+        "status": "approved",
+        "submittedAt": "2024-02-15",
+        "paymentStatus": "completed",
+        "price": 5
+      },
+      {
+        "id": "2",
+        "title": "Plain Text Editor",
+        "description": "Like Notepad, but slightly worse. No fancy features.",
+        "logo": "https://example.com/editor-logo.png",
+        "category": ["tools", "boring"],
+        "url": "https://plain-editor.com",
+        "status": "approved",
+        "submittedAt": "2024-02-14",
+        "paymentStatus": "completed",
+        "price": 3
+      },
+      {
+        "id": "3",
+        "title": "Average Calculator",
+        "description": "Adds numbers together. Sometimes subtracts them too.",
+        "logo": "https://example.com/calc-logo.png",
+        "category": ["utilities", "boring"],
+        "url": "https://avg-calc.com",
+        "status": "approved",
+        "submittedAt": "2024-02-13",
+        "paymentStatus": "completed",
+        "price": 2
+      }
+    ]
+  }

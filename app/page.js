@@ -1,45 +1,47 @@
-import Link from "next/link";
-import ButtonSignin from "@/components/ButtonSignin";
+// app/page.js
+import Link from 'next/link'
+import database from '@/data/database.json'
 
-export default function Page() {
+export default function HomePage() {
+  // Get unique categories from our database
+  const uniqueCategories = new Set()
+  database.projects.forEach(project => {
+    project.category.forEach(cat => uniqueCategories.add(cat))
+  })
+
   return (
-    <>
-      <header className="p-4 flex justify-end max-w-7xl mx-auto">
-        <ButtonSignin text="Login" />
-      </header>
-      <main>
-        <section className="flex flex-col items-center justify-center text-center gap-12 px-8 py-24">
-          <h1 className="text-3xl font-extrabold">Ship Fast ⚡️</h1>
+    <main className="max-w-4xl mx-auto p-8">
+      {/* Intentionally boring header */}
+      <div className="mb-12 text-center">
+        <h1 className="text-3xl font-mono mb-2">Small Boring Tools</h1>
+        <p className="text-gray-600 font-mono">a boring website for boring tools</p>
+      </div>
 
-          <p className="text-lg opacity-80">
-            The start of your new startup... What are you gonna build?
-          </p>
-
-          <a
-            className="btn btn-primary"
-            href="https://shipfa.st/docs"
-            target="_blank"
+      {/* Simple category grid */}
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+        {Array.from(uniqueCategories).map((category) => (
+          <Link 
+            key={category}
+            href={`/submissions/${category}`}
+            className="p-4 border border-gray-200 hover:border-gray-300 rounded-sm transition-colors font-mono"
           >
-            Documentation & tutorials{" "}
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 20 20"
-              fill="currentColor"
-              className="w-5 h-5"
-            >
-              <path
-                fillRule="evenodd"
-                d="M5 10a.75.75 0 01.75-.75h6.638L10.23 7.29a.75.75 0 111.04-1.08l3.5 3.25a.75.75 0 010 1.08l-3.5 3.25a.75.75 0 11-1.04-1.08l2.158-1.96H5.75A.75.75 0 015 10z"
-                clipRule="evenodd"
-              />
-            </svg>
-          </a>
-
-          <Link href="/blog" className="link link-hover text-sm">
-            Fancy a blog?
+            {category}
           </Link>
-        </section>
-      </main>
-    </>
-  );
+        ))}
+      </div>
+
+      {/* Latest additions - keeping it simple */}
+      <div className="mt-12">
+        <h2 className="text-xl font-mono mb-4">Latest Tools</h2>
+        <div className="space-y-4">
+          {database.projects.slice(0, 3).map(project => (
+            <div key={project.id} className="p-4 border border-gray-200 rounded-sm">
+              <h3 className="font-mono">{project.title}</h3>
+              <p className="text-gray-600 text-sm mt-1">{project.description}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </main>
+  )
 }
