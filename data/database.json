@@ -10,7 +10,8 @@
         "status": "approved",
         "submittedAt": "2024-02-15",
         "paymentStatus": "completed",
-        "price": 5
+        "price": 5,
+        "boringRating": "7/10 - like watching paint dry"
       },
       {
         "id": "2",
@@ -22,7 +23,8 @@
         "status": "approved",
         "submittedAt": "2024-02-14",
         "paymentStatus": "completed",
-        "price": 3
+        "price": 3,
+        "boringRating": "4/10 - fell asleep reading the description"
       },
       {
         "id": "3",
@@ -34,7 +36,8 @@
         "status": "approved",
         "submittedAt": "2024-02-13",
         "paymentStatus": "completed",
-        "price": 2
+        "price": 2,
+        "boringRating": "10/10 - almost died of boredom"
       }
     ]
   }
