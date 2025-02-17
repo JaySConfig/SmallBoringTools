@@ -1,24 +1,41 @@
 import database from '@/data/database.json';
 import Link from 'next/link';
 
-
+console.log('Database projects:', database.projects); // Add this line at the top
 
 // This tells Next.js which category routes to generate
-export function generateStaticParams() {
-    // Get unique categories from our database
-    const uniqueCategories = new Set()
-    database.projects.forEach(project => {
-      project.category.forEach(cat => uniqueCategories.add(cat))
-    })
+// export function generateStaticParams() {
+    // // Get unique categories from our database
+    // const uniqueCategories = new Set()
+    // database.projects.forEach(project => {
+    //   project.category.forEach(cat => uniqueCategories.add(cat))
+    // })
     
-    // Return them in the format Next.js expects
-    return Array.from(uniqueCategories).map((category) => ({
-      category: category,
-    }))
+    // // Return them in the format Next.js expects
+    // return Array.from(uniqueCategories).map((category) => ({
+    //   category: category,
+    // }))
+
+    export function generateStaticParams() {
+      const uniqueCategories = new Set()
+      database.projects.forEach(project => {
+        project.category.forEach(cat => uniqueCategories.add(cat))
+      })
+      
+      const params = Array.from(uniqueCategories).map((category) => ({
+        category: category,
+      }))
+      console.log('Generated params:', params); // Add this line
+      return params;
   }
 
+  // }
+
 export default function CategoryPage({ params }) {
+  console.log('Params:', params); // Add this line
   const category = params.category
+  console.log('Category:', category)
+  // const category = params.category
   
   // Filter projects for this category
   const filteredProjects = database.projects.filter(project => 
@@ -34,14 +51,17 @@ export default function CategoryPage({ params }) {
   if (filteredProjects.length === 0) {
     
     return (
-      <div className="p-4">
-        {/* takes user back to chome page */}
-        <Link href='/' className='text-blue-500 hover:text-text-blue-700'>
-        ← Back to Home
-        </Link>
-        <h1 className="text-2xl font-bold mb-4">Category: {category}</h1>
-        <p>No projects found in this category.</p>
-      </div>
+        <main className='max-w-4xl mx-auto p-8'>
+            <div className="mb-12 text-center">
+                {/* takes user back to chome page */}
+                <Link href='/' className='text-grey-500 hover:text-text-grey-700'>
+                ← Back to Home
+                </Link>
+                <h1 className="text-3xl font-light tracking-tight mb-4">Cat›gory: {category}</h1>
+                <p className='text-gray-600 font-light'>No projects found in this category.</p>
+            </div>
+        </main>
+      
     )
   }
 
