@@ -1,6 +1,9 @@
 import database from '@/data/database.json';
 import Link from 'next/link';
 import PlaceHolderImage from '@/components/PlaceHolderImage';
+import { CATEGORIES } from '@/libs/constants'
+
+
 console.log('Database projects:', database.projects); // Add this line at the top
 
 // This tells Next.js which category routes to generate
@@ -16,26 +19,16 @@ console.log('Database projects:', database.projects); // Add this line at the to
     //   category: category,
     // }))
 
-    export function generateStaticParams() {
-      const uniqueCategories = new Set()
-      database.projects.forEach(project => {
-        project.category.forEach(cat => uniqueCategories.add(cat))
-      })
-      
-      const params = Array.from(uniqueCategories).map((category) => ({
+  export function generateStaticParams() {
+      return CATEGORIES.map((category) => ({
         category: category,
       }))
-      console.log('Generated params:', params); // Add this line
-      return params;
-  }
+    }
 
   // }
 
-export default function CategoryPage({ params }) {
-  console.log('Params:', params); // Add this line
-  const category = params.category
-  console.log('Category:', category)
-  // const category = params.category
+  export default function CategoryPage({ params }) {
+    const category = params.category
   
   // Filter projects for this category
   const filteredProjects = database.projects.filter(project => 

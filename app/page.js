@@ -104,16 +104,17 @@
 //   )
 // }
 
-import Link from 'next/link'
-import database from '@/data/database.json'
-import Footer from '@/components/Footer'
+import Link from 'next/link';
+import database from '@/data/database.json';
+import Footer from '@/components/Footer';
+import { CATEGORIES } from '@/libs/constants'
+import SubmitButton from '@/components/SubmitButton';
+
+
 
 export default function HomePage() {
   // Get unique categories
-  const uniqueCategories = new Set()
-  database.projects.forEach(project => {
-    project.category.forEach(cat => uniqueCategories.add(cat))
-  })
+  
 
   return (
     <main className="max-w-4xl mx-auto p-8">
@@ -137,7 +138,7 @@ export default function HomePage() {
       </div>
 
       {/* Categories */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+      {/* <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         {Array.from(uniqueCategories).map((category) => (
           <Link 
             key={category}
@@ -147,7 +148,21 @@ export default function HomePage() {
             {category}
           </Link>
         ))}
+      
+      </div> */}
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+        {CATEGORIES.map((category) => (
+          <Link 
+            key={category}
+            href={`/submissions/${category}`}
+            className="p-4 border border-gray-200 hover:border-gray-300 rounded-sm transition-colors font-light"
+          >
+            {category}
+          </Link>
+        ))}
       </div>
+
+      <div><SubmitButton/></div>
 
       {/* Latest Tools */}
       <div className="mt-12">
