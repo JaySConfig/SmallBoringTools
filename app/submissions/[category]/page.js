@@ -50,8 +50,8 @@ console.log('Database projects:', database.projects); // Add this line at the to
                 <Link href='/' className='text-gray-500 hover:text-gray-700'>
                 ← Back to Home
                 </Link>
-                <h1 className="text-3xl font-light tracking-tight mb-4">Category: {category}</h1>
-                <p className='text-gray-600 font-light'>No projects found in this category.</p>
+                <h1 className="text-3xl font-light tracking-tight mb-4">{category}</h1>
+                <p className='text-gray-600 font-light'>That's boring! We don't even have an listings for this category 🥱.</p>
             </div>
         </main>
       
@@ -68,7 +68,7 @@ console.log('Database projects:', database.projects); // Add this line at the to
         </div>
 
 
-      <h1 className="text-3xl font-light tracking-tight text-gray-800 mb-8">Category: {category}</h1>
+      <h1 className="text-3xl font-light tracking-tight text-gray-800 mb-8">{category}</h1>
       {/* How should we display the projects? */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
         {filteredProjects.map(project => (

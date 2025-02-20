@@ -1,43 +1,117 @@
 {
-    "projects": [
-      {
-        "id": "1",
-        "title": "Really Basic To-Do List",
-        "description": "It's a to-do list. You add things. You remove things. That's it.",
-        "logo": "https://example.com/todo-logo.png",
-        "category": ["productivity", "boring"],
-        "url": "https://basic-todo.com",
-        "status": "approved",
-        "submittedAt": "2024-02-15",
-        "paymentStatus": "completed",
-        "price": 5,
-        "boringRating": "7/10 - like watching paint dry"
-      },
-      {
-        "id": "2",
-        "title": "Plain Text Editor",
-        "description": "Like Notepad, but slightly worse. No fancy features.",
-        "logo": "https://example.com/editor-logo.png",
-        "category": ["tools", "boring"],
-        "url": "https://plain-editor.com",
-        "status": "approved",
-        "submittedAt": "2024-02-14",
-        "paymentStatus": "completed",
-        "price": 3,
-        "boringRating": "4/10 - fell asleep reading the description"
-      },
-      {
-        "id": "3",
-        "title": "Average Calculator",
-        "description": "Adds numbers together. Sometimes subtracts them too.",
-        "logo": "https://example.com/calc-logo.png",
-        "category": ["utilities", "boring"],
-        "url": "https://avg-calc.com",
-        "status": "approved",
-        "submittedAt": "2024-02-13",
-        "paymentStatus": "completed",
-        "price": 2,
-        "boringRating": "10/10 - almost died of boredom"
-      }
-    ]
-  }
+  "projects": [
+    {
+      "id": "1",
+      "title": "Really Basic To-Do List",
+      "description": "It's a to-do list. You add things. You remove things. That's it.",
+      "logo": "https://example.com/todo-logo.png",
+      "category": [
+        "productivity",
+        "boring"
+      ],
+      "url": "https://x.com",
+      "status": "approved",
+      "submittedAt": "2024-02-15",
+      "paymentStatus": "completed",
+      "price": 5,
+      "boringRating": "7/10 - like watching paint dry"
+    },
+    {
+      "id": "2",
+      "title": "Plain Text Editor",
+      "description": "Like Notepad, but slightly worse. No fancy features.",
+      "logo": "https://example.com/editor-logo.png",
+      "category": [
+        "tools",
+        "boring"
+      ],
+      "url": "https://plain-editor.com",
+      "status": "approved",
+      "submittedAt": "2024-02-14",
+      "paymentStatus": "completed",
+      "price": 3,
+      "boringRating": "4/10 - fell asleep reading the description"
+    },
+    {
+      "id": "3",
+      "title": "Average Calculator",
+      "description": "Adds numbers together. Sometimes subtracts them too.",
+      "logo": "https://example.com/calc-logo.png",
+      "category": [
+        "utilities",
+        "boring"
+      ],
+      "url": "https://avg-calc.com",
+      "status": "approved",
+      "submittedAt": "2024-02-13",
+      "paymentStatus": "completed",
+      "price": 2,
+      "boringRating": "10/10 - almost died of boredom"
+    },
+    {
+      "id": "13813d23-9893-434d-8655-e16c781fe4eb",
+      "title": "g",
+      "description": "g",
+      "url": "https://x.com",
+      "category": [
+        "boring",
+        "productivity"
+      ],
+      "submittedAt": "2025-02-19",
+      "status": "approved",
+      "boringRating": "7/10 - like watching paint dry"
+    },
+    {
+      "id": "7d35693d-6f3c-4909-8852-0bd65d7d9793",
+      "title": "k",
+      "description": "k",
+      "url": "https://x.com",
+      "category": [
+        "boring",
+        "tools"
+      ],
+      "submittedAt": "2025-02-20",
+      "status": "approved",
+      "boringRating": "7/10 - like watching paint dry"
+    },
+    {
+      "id": "c2909f73-418a-4d90-a766-dca5d5b64282",
+      "title": "x",
+      "description": "x",
+      "url": "https://x.com",
+      "category": [
+        "boring",
+        "tools"
+      ],
+      "submittedAt": "2025-02-20",
+      "status": "approved",
+      "boringRating": "7/10 - like watching paint dry"
+    },
+    {
+      "id": "62f3dc8c-9e48-49ab-9862-0c2073d3efad",
+      "title": "x",
+      "description": "x",
+      "url": "https://x.com",
+      "category": [
+        "boring",
+        "generators"
+      ],
+      "submittedAt": "2025-02-20",
+      "status": "approved",
+      "boringRating": "7/10 - like watching paint dry"
+    },
+    {
+      "id": "da2f984e-fa68-47cc-8afb-b49b1936fb4e",
+      "title": "gdhdhd",
+      "description": "dhdhdhdhdhddhdhdhdhdhdhdhd",
+      "url": "https://.x.com",
+      "category": [
+        "boring",
+        "organizers"
+      ],
+      "submittedAt": "2025-02-20",
+      "status": "approved",
+      "boringRating": "7/10 - like watching paint dry"
+    }
+  ]
+}

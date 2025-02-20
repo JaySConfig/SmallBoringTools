@@ -4,63 +4,62 @@ import { CATEGORIES } from '@/libs/constants'
 
 export default function SubmitModal({ onClose }) {
   const selectableCategories = CATEGORIES.filter(cat => cat !== 'boring')
+  const [successMessage, setSuccessMessage] = useState("");
+  const [isLoading, setIsLoading] = useState(false)  // Add this line
+
 
   const [formData, setFormData] = useState({
     title: '',
     description: '',
     url: 'https://',
-    category: ['boring']  // boring is always preselected
+    category: ['boring']
   })
-  
-  
+
+  // Clean up the handleSubmit function formatting
   const handleSubmit = async (e) => {
+    console.log("Form submitted") 
     e.preventDefault()
+    setIsLoading(true)  // Add this line
 
-    if (!formData.title || ! formData.description || ! formData.url || formData.categorie.length < 2) {
-        alert ('Please fill in all fields and select a category')
-    } return
-}
-
-    // generate a new ID
+    if (!formData.title || !formData.description || !formData.url || formData.category.length < 2) {
+      alert('Please fill in all fields and select a category')
+      setIsLoading(false)
+      return
+    }
 
     const newId = crypto.randomUUID()
-
-    // create the full submission object
     const submission = {
-        id: newId,
-        ...formData,
-        submittedAt: new Date().toISOString().split('T')[0],
-        status: 'approved',
-        boringRating: '7/10 - like watching paint dry'
+      id: newId,
+      ...formData,
+      submittedAt: new Date().toISOString().split('T')[0],
+      status: 'approved',
+      boringRating: '7/10 - like watching paint dry'
     }
 
     try {
-        const response = await fetch('/api/submit', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(submission)
-        })
+      const response = await fetch('/api/submit', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(submission)
+      })
 
-        console.log('Submitting:', submission)
-    onclose()
-
-    if (response.ok) {
-        onClose()
-        console.log ("submission sucessfull")
-    }
-
-
-
+      if (response.ok) {
+        console.log("Submission successful")
+        setSuccessMessage("✅ Your form has been successfully submitted! 🥱")
+        // Wait 1.5 seconds before closing
+        setTimeout(() => {
+          onClose()
+        }, 1500)
+      }
     } catch (error) {
-        console.error("Error submitting:", error)
-        alert('Error submitting:', error )
-        alert('Error submitting your tool. Please try again.')
-        
-    }
-
-    
+      console.error("Error submitting:", error)
+      alert('Error submitting your tool. Please try again.')
+    } finally {
+        setIsLoading(false)  // Stop loading whether success or error
+      }
+  }
 
 
   const toggleCategory = (category) => {
@@ -82,6 +81,13 @@ export default function SubmitModal({ onClose }) {
             ×
           </button>
         </div>
+
+        {successMessage && (
+        <div className="p-3 bg-green-100 text-green-800 border border-green-300 rounded-sm mb-4">
+             {successMessage}
+        </div>
+        )}
+
         
         <form onSubmit={handleSubmit} className="space-y-4">
           <input 
@@ -90,12 +96,14 @@ export default function SubmitModal({ onClose }) {
             value={formData.title}
             onChange={(e) => setFormData(prev => ({ ...prev, title: e.target.value }))}
             className="w-full p-2 border border-gray-200 rounded-sm font-light"
+            minLength={4}
           />
           <textarea 
             placeholder="description (make it boring)"
             value={formData.description}
             onChange={(e) => setFormData(prev => ({ ...prev, description: e.target.value }))}
             className="w-full p-2 border border-gray-200 rounded-sm font-light h-24"
+            minLength={20}
           />
           <input 
             type="url" 
@@ -133,11 +141,14 @@ export default function SubmitModal({ onClose }) {
           </div>
 
           <button 
-            type="submit"
-            className="w-full p-2 border border-gray-200 hover:border-gray-300 rounded-sm transition-colors font-light"
-          >
-            submit
-          </button>
+                type="submit"
+                disabled={isLoading}
+                className={`w-full p-2 border border-gray-200 hover:border-gray-300 rounded-sm transition-colors font-light ${
+                    isLoading ? 'opacity-50 cursor-not-allowed' : ''
+                }`}
+                >
+                {isLoading ? 'Submitting...' : 'submit'}
+            </button>
         </form>
       </div>
     </div>
