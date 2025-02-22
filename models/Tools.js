@@ -36,4 +36,4 @@ const ToolSchema = new mongoose.Schema({
   boringRating: String  // Now optional
 })
 
-export default mongoose.models.Tool || mongoose.model('Tool', ToolSchema)
+export default mongoose.models.Tools || mongoose.model('Tools', ToolSchema)

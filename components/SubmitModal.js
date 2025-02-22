@@ -27,14 +27,22 @@ export default function SubmitModal({ onClose }) {
       return
     }
 
-    const newId = crypto.randomUUID()
+    // const newId = crypto.randomUUID()
+    // const submission = {
+    //   id: newId,
+    //   ...formData,
+    //   submittedAt: new Date().toISOString().split('T')[0],
+    //   status: 'approved',
+    //   boringRating: '7/10 - like watching paint dry'
+    // }
+
     const submission = {
-      id: newId,
       ...formData,
       submittedAt: new Date().toISOString().split('T')[0],
       status: 'approved',
-      boringRating: '7/10 - like watching paint dry'
-    }
+      boringRating: '7/10 - like watching paint dry',
+    };
+    
 
     try {
       const response = await fetch('/api/submit', {

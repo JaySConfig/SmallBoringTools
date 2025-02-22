@@ -109,11 +109,29 @@ import database from '@/data/database.json';
 import Footer from '@/components/Footer';
 import { CATEGORIES } from '@/libs/constants'
 import SubmitButton from '@/components/SubmitButton';
+import connectMongo from '@/libs/mongoose'
+import Tools from '@/models/Tools'
+
+async function getLatestTools() {
+  try {
+    console.log('Getting latest tools from MongoDB...')
+    await connectMongo()
+    const tools = await Tool.find().sort({ submittedAt: -1 }).lean()
+    console.log(`Found ${tools.length} tools`)
+    return tools
+  } catch (error) {
+    console.error('Error fetching tools:', error)
+    // Fallback to empty array if MongoDB fails
+    return []
+  }
+}
 
 
 
-export default function HomePage() {
+export default async function HomePage() {
   // Get unique categories
+
+  const projects = await getLatestTools()
   
 
   return (

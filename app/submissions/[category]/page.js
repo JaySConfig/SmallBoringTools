@@ -2,22 +2,8 @@ import database from '@/data/database.json';
 import Link from 'next/link';
 import PlaceHolderImage from '@/components/PlaceHolderImage';
 import { CATEGORIES } from '@/libs/constants'
-
-
-console.log('Database projects:', database.projects); // Add this line at the top
-
-// This tells Next.js which category routes to generate
-// export function generateStaticParams() {
-    // // Get unique categories from our database
-    // const uniqueCategories = new Set()
-    // database.projects.forEach(project => {
-    //   project.category.forEach(cat => uniqueCategories.add(cat))
-    // })
-    
-    // // Return them in the format Next.js expects
-    // return Array.from(uniqueCategories).map((category) => ({
-    //   category: category,
-    // }))
+import connectMongo from '@/libs/mongoose';
+import Tools from '@/models/Tools';
 
   export function generateStaticParams() {
       return CATEGORIES.map((category) => ({
@@ -25,15 +11,19 @@ console.log('Database projects:', database.projects); // Add this line at the to
       }))
     }
 
-  // }
+    async function getToolsByCategory(category) {
+      await connectMongo()
+      return Tools.find({ category: category}).lean()
+    }
 
-  export default function CategoryPage({ params }) {
+  
+
+  export default async function CategoryPage({ params }) {
     const category = params.category
   
   // Filter projects for this category
-  const filteredProjects = database.projects.filter(project => 
-    project.category.includes(category)
-  )
+  const filteredProjects = await getToolsByCategory(category)
+
   
   if (!category){
     return <div> Category not found</div>
@@ -72,7 +62,7 @@ console.log('Database projects:', database.projects); // Add this line at the to
       {/* How should we display the projects? */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
         {filteredProjects.map(project => (
-           <div key={project.id} className="p-4 border border-gray-200 hover:border-gray-300 rounded-sm transition-colors">
+           <div key={project.id || project._id}className="p-4 border border-gray-200 hover:border-gray-300 rounded-sm transition-colors">
            <PlaceHolderImage
              src={project.logo} 
              alt={project.title}
