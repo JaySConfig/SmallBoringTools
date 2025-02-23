@@ -1,5 +1,6 @@
 import Link from 'next/link'
 import database from '@/data/database.json'
+import SubmitButton from './SubmitButton'
 
 export default function Footer() {
   // Get unique categories directly in the footer
@@ -33,12 +34,13 @@ export default function Footer() {
             <br />
             Perfect. List it here for free.
           </p>
-          <Link 
+          {/* <Link 
             href="/submit" 
             className="text-gray-500 text-sm mt-4 inline-block hover:text-gray-700 font-light"
           >
             Submit →
-          </Link>
+          </Link> */}
+          <SubmitButton/>
         </div>
 
         <div>
