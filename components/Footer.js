@@ -31,7 +31,7 @@ export default function Footer() {
           <p className="text-gray-500 font-light text-sm">
             Got something painfully boring?
             <br />
-            Perfect. List it here for $5.
+            Perfect. List it here for free.
           </p>
           <Link 
             href="/submit" 
