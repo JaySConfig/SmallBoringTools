@@ -1,6 +1,4 @@
 {
   "/page": "app/page.js",
-  "/submissions/[category]/page": "app/submissions/[category]/page.js",
-  "/api/auth/[...nextauth]/route": "app/api/auth/[...nextauth]/route.js",
-  "/not-found": "app/not-found.js"
+  "/submissions/[category]/page": "app/submissions/[category]/page.js"
 }

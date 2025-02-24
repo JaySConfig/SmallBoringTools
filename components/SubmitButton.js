@@ -17,4 +17,4 @@ export default function SubmitButton() {
       {isOpen && <SubmitModal onClose={() => setIsOpen(false)} />}
     </div>
   )
-} 
+}

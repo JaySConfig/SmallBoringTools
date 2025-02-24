@@ -1,6 +1,6 @@
 'use client'
-
 import { useState } from 'react'
+import Image from 'next/image'
 
 const PlaceHolderImage = ({ src, alt }) => {
   const [showFallback, setShowFallback] = useState(!src)
@@ -14,9 +14,11 @@ const PlaceHolderImage = ({ src, alt }) => {
   }
 
   return (
-    <img 
-      src={src} 
-      alt={alt} 
+    <Image
+      src={src}
+      alt={alt}
+      width={64}
+      height={64}
       className="w-16 h-16 object-contain"
       onError={() => setShowFallback(true)}
     />

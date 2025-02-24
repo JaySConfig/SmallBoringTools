@@ -1,4 +1,3 @@
-import database from '@/data/database.json';
 import Link from 'next/link';
 import PlaceHolderImage from '@/components/PlaceHolderImage';
 import { CATEGORIES } from '@/libs/constants'
@@ -41,10 +40,12 @@ import Tools from '@/models/Tools';
                 ← Back to Home
                 </Link>
                 <h1 className="text-3xl font-light tracking-tight mb-4">{category}</h1>
-                <p className='text-gray-600 font-light'>That's boring! We don't even have an listings for this category 🥱.</p>
+                <p className='text-gray-600 font-light'>That&apos;s boring! We don&apos;t even have an listings for this category 🥱.</p>
             </div>
         </main>
       
+
+
     )
   }
 
@@ -62,7 +63,7 @@ import Tools from '@/models/Tools';
       {/* How should we display the projects? */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
         {filteredProjects.map(project => (
-           <div key={project.id || project._id}className="p-4 border border-gray-200 hover:border-gray-300 rounded-sm transition-colors">
+           <div key={project.id || project._id} className="p-4 border border-gray-200 hover:border-gray-300 rounded-sm transition-colors">
            <PlaceHolderImage
              src={project.logo} 
              alt={project.title}
