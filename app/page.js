@@ -279,7 +279,7 @@ export default async function HomePage() {
                 </span>
               </div>
               <p className="text-gray-600 text-sm mt-1 font-light">{tool.description}</p>
-              <a 
+              <a  
                 href={tool.url} 
                 className="text-gray-500 text-sm mt-2 inline-block hover:text-gray-700 font-light"
               >

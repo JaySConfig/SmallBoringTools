@@ -12,19 +12,27 @@ export default function SubmitModal({ onClose }) {
     title: '',
     description: '',
     url: 'https://',
-    category: ['boring']
+    category: ['boring'],
+    email: ''
   })
 
   // Clean up the handleSubmit function formatting
   const handleSubmit = async (e) => {
     console.log("Form submitted") 
     e.preventDefault()
+    const formData = new FormData(e.target);
     setIsLoading(true)  // Add this line
 
     if (!formData.title || !formData.description || !formData.url || formData.category.length < 2) {
       alert('Please fill in all fields and select a category')
       setIsLoading(false)
       return
+    }
+
+    if (formData.get('website_url')) {
+      // Silently reject - likely a bot
+      console.log("Honeypot triggered");
+      return;
     }
 
     // const newId = crypto.randomUUID()
@@ -127,6 +135,15 @@ export default function SubmitModal({ onClose }) {
             }}
             className="w-full p-2 border border-gray-200 rounded-sm font-light"
             />
+
+            <input 
+              type="email" 
+              placeholder="your email"
+              value={formData.email}
+              onChange={(e) => setFormData(prev => ({ ...prev, email: e.target.value }))}
+              className="w-full p-2 border border-gray-200 rounded-sm font-light"
+              required
+            />
           
           <div className="space-y-2">
             <p className="text-gray-600 font-light">select one additional category</p>
@@ -157,6 +174,15 @@ export default function SubmitModal({ onClose }) {
                 >
                 {isLoading ? 'Submitting...' : 'submit'}
             </button>
+
+            <input 
+              type="text" 
+              name="website_url" 
+              style={{display: 'none'}} 
+              tabIndex="-1" 
+              aria-hidden="true"
+              autoComplete="off"
+            />
         </form>
       </div>
     </div>
