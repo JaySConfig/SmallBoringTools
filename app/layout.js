@@ -3,6 +3,19 @@ import { getSEOTags } from "@/libs/seo";
 import ClientLayout from "@/components/LayoutClient";
 import config from "@/config";
 import "./globals.css";
+import { getSEOTags } from "@/libs/seo";
+
+// Add this function at the top of your file
+export async function generateMetadata({ params }) {
+  const { category } = params;
+  const formattedCategory = category.charAt(0).toUpperCase() + category.slice(1);
+  
+  return getSEOTags({
+    title: `${formattedCategory} Tools | Small Boring Tools`,
+    description: `Discover our collection of simple, predictable ${category} tools that get the job done without unnecessary complexity.`,
+    canonicalUrlRelative: `/submissions/${category}`
+  });
+}
 
 const font = Inter({ subsets: ["latin"] });
 

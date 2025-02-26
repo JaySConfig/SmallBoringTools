@@ -217,6 +217,14 @@ import { CATEGORIES } from '@/libs/constants'
 import SubmitButton from '@/components/SubmitButton';
 import connectMongo from '@/libs/mongoose'
 import Tools from '@/models/Tools'
+import { getSEOTags } from "@/libs/seo";
+
+// Add metadata at the top of your file
+export const metadata = getSEOTags({
+  title: "Small Boring Tools | Simple, Reliable Tools",
+  description: "Just simple, predictable tools that do one thing well. No AI, no blockchain, no paradigm shifts. We celebrate boring reliability.",
+  canonicalUrlRelative: "/"
+});
 
 // Remove database.json import since we're using MongoDB
 
