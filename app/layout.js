@@ -3,7 +3,6 @@ import { getSEOTags } from "@/libs/seo";
 import ClientLayout from "@/components/LayoutClient";
 import config from "@/config";
 import "./globals.css";
-import { getSEOTags } from "@/libs/seo";
 
 // Add this function at the top of your file
 export async function generateMetadata({ params }) {
@@ -28,7 +27,6 @@ export const viewport = {
 
 // This adds default SEO tags to all pages in our app.
 // You can override them in each page passing params to getSOTags() function.
-export const metadata = getSEOTags();
 
 export default function RootLayout({ children }) {
 	return (
