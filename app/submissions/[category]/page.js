@@ -3,6 +3,18 @@ import PlaceHolderImage from '@/components/PlaceHolderImage';
 import { CATEGORIES } from '@/libs/constants'
 import connectMongo from '@/libs/mongoose';
 import Tools from '@/models/Tools';
+import { getSEOTags } from "@/libs/seo";
+
+export async function generateMetadata({ params }) {
+  const { category } = params;
+  const formattedCategory = category.charAt(0).toUpperCase() + category.slice(1);
+  
+  return getSEOTags({
+    title: `${formattedCategory} Tools | Small Boring Tools`,
+    description: `Discover our collection of simple, predictable ${category} tools that get the job done without unnecessary complexity.`,
+    canonicalUrlRelative: `/submissions/${category}`
+  });
+}
 
   export function generateStaticParams() {
       return CATEGORIES.map((category) => ({
